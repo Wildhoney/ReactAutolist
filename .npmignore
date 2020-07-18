@@ -1,9 +1,14 @@
 .history/
 example/
+misc/
+src/__tests__/
 
 .babelrc
 .npmignore
+.eslintignore
+.eslintrc
 .prettierignore
 .prettierrc.json
-next.congig.js
+ava.config.js
+next.config.js
 rollup.config.js
