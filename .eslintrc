@@ -1,0 +1,22 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "standard",
+        "prettier",
+        "plugin:react/recommended",
+        "prettier/standard"
+    ],
+    "plugins": ["react"],
+    "rules": {
+        "no-sequences": "off",
+        "no-unused-expressions": "off",
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
+}
+
