@@ -1,6 +1,6 @@
 {
     "name": "react-autolist",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "Browser native implementation of autocomplete using the datalist element.",
     "main": "dist/react-autolist.cjs.js",
     "module": "dist/react-autolist.esm.js",
