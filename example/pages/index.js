@@ -30,7 +30,7 @@ export default function Index() {
         <e.Container>
             <e.Autolist
                 minLength={2}
-                placeholder="How many countries do you love?"
+                placeholder="Which countries do you love?"
                 onSuggest={handleSuggest}
                 onChange={handleChange}
             />

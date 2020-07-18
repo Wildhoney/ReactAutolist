@@ -14,8 +14,10 @@ export const Autolist = styled(Autolist_)`
     border: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.05);
     padding: 35px;
+    padding-bottom: 60px;
+    border-bottom: 2px solid lightgray;
     outline: none;
-    font-size: 2rem;
+    font-size: 3vw;
     background-color: white;
     width: 50vw;
     border-radius: 5px;
