@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { isNil } from 'ramda';
 import { useMethods } from 'react-use';
@@ -58,13 +58,14 @@ export default function Autolist({
     );
 
     return (
-        <Fragment>
+        <>
             <input
                 type="text"
                 {...props}
                 name={name}
                 list={name ?? 'autolist'}
                 value={state.text}
+                data-loading={state.isLoading ? 'yes' : 'no'}
                 onChange={handleChange}
                 onKeyPress={handleKeyPress}
             />
@@ -76,7 +77,7 @@ export default function Autolist({
             </datalist>
 
             {typeof children === 'function' && children(handleSuggestion)}
-        </Fragment>
+        </>
     );
 }
 
