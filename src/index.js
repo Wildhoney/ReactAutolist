@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { Fragment, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { isNil } from 'ramda';
 import { useMethods } from 'react-use';
@@ -51,7 +51,7 @@ export default function Autolist({
     );
 
     return (
-        <>
+        <Fragment>
             <input
                 type="text"
                 {...props}
@@ -67,7 +67,7 @@ export default function Autolist({
                     <option key={suggestion.id}>{suggestion.value}</option>
                 ))}
             </datalist>
-        </>
+        </Fragment>
     );
 }
 

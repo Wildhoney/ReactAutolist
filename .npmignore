@@ -1,0 +1,9 @@
+.history/
+example/
+
+.babelrc
+.npmignore
+.prettierignore
+.prettierrc.json
+next.congig.js
+rollup.config.js

@@ -2,11 +2,13 @@
     "name": "react-autolist",
     "version": "0.0.0",
     "description": "Browser native implementation of autocomplete using the datalist element.",
-    "main": "src/index.js",
+    "main": "dist/react-autolist.cjs.js",
+    "module": "dist/react-autolist.esm.js",
     "repository": "git@github.com:Wildhoney/ReactAutolist.git",
     "author": "Adam Timberlake <adam.timberlake@gmail.com>",
     "license": "MIT",
     "scripts": {
+        "build": "rollup -c",
         "format": "prettier --write '**/**.{js,json}'",
         "dev": "next ./example -p ${PORT:-3000}"
     },
@@ -21,6 +23,10 @@
         "@emotion/core": "^10.0.28",
         "@emotion/styled": "^10.0.27",
         "next": "^9.4.4",
-        "prettier": "^2.0.5"
+        "prettier": "^2.0.5",
+        "rollup": "^2.22.0",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-jsx": "^1.0.3",
+        "rollup-plugin-terser": "^6.1.0"
     }
 }
