@@ -10,6 +10,8 @@
     "scripts": {
         "build": "rollup -c",
         "format": "prettier --write '**/**.{js,json}'",
+        "test": "yarn lint && yarn spec",
+        "spec": "ava",
         "lint": "eslint '**/**.js'",
         "dev": "next ./example -p ${PORT:-3000}"
     },
@@ -21,9 +23,16 @@
         "react-use": "^15.3.2"
     },
     "devDependencies": {
+        "@babel/polyfill": "^7.10.4",
+        "@babel/register": "^7.10.5",
         "@emotion/core": "^10.0.28",
         "@emotion/styled": "^10.0.27",
+        "ava": "^3.10.1",
         "babel-eslint": "^10.1.0",
+        "browser-env": "^3.3.0",
+        "delay": "^4.4.0",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
         "eslint": "^7.0.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-config-standard": "^14.1.1",
@@ -37,6 +46,7 @@
         "rollup": "^2.22.0",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-jsx": "^1.0.3",
-        "rollup-plugin-terser": "^6.1.0"
+        "rollup-plugin-terser": "^6.1.0",
+        "sinon": "^9.0.2"
     }
 }

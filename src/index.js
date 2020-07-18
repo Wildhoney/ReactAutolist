@@ -1,4 +1,4 @@
-import { Fragment, useCallback } from 'react';
+import React, { Fragment, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { isNil } from 'ramda';
 import { useMethods } from 'react-use';
@@ -18,17 +18,20 @@ export default function Autolist({
         duck.getInitialState(value),
     );
 
-    const handleChange = useCallback(async ({ target }) => {
-        methods.text(target.value);
+    const handleChange = useCallback(
+        async ({ target }) => {
+            methods.text(target.value);
 
-        // Don't continue if the length is too short.
-        if (target.value.length <= minLength) return;
+            // Don't continue if the length is too short.
+            if (target.value.length <= minLength) return;
 
-        // Invoke the `onSuggest` function to fetch the suggestions.
-        methods.initiateSuggestions();
-        const suggestions = await onSuggest(target.value);
-        methods.putSuggestions(suggestions);
-    }, []);
+            // Invoke the `onSuggest` function to fetch the suggestions.
+            methods.initiateSuggestions();
+            const suggestions = await onSuggest(target.value);
+            Array.isArray(suggestions) && methods.putSuggestions(suggestions);
+        },
+        [minLength, onSuggest],
+    );
 
     const handleKeyPress = useCallback(
         (event) => {
@@ -47,7 +50,7 @@ export default function Autolist({
                 }
             }
         },
-        [state.text, state.amalgamatedSuggestions],
+        [state.text, state.amalgamatedSuggestions, onChange, onResolve],
     );
 
     return (
