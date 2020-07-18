@@ -94,3 +94,22 @@ test('It should be able to invoke the `onChange` when selecting a value from the
     wrapper.find('input').simulate('keypress', { key: 'enter' });
     t.is(spies.onChange.callCount, 2);
 });
+
+test('It should be able to invoke the `onSuggest` when clicking the button;', async (t) => {
+    const spies = {
+        onSuggest: sinon.spy(() => [{ id: 1, value: 'Russian Federation' }]),
+        onChange: sinon.spy(),
+    };
+
+    const wrapper = mount(
+        <Autolist onSuggest={spies.onSuggest} onChange={spies.onChange}>
+            {(handleSubmit) => <button onClick={handleSubmit}>Submit!</button>}
+        </Autolist>,
+    );
+    wrapper
+        .find('input')
+        .simulate('change', { target: { value: 'Russian Federation' } });
+    await delay(1);
+    wrapper.find('button').simulate('click');
+    t.is(spies.onChange.callCount, 1);
+});

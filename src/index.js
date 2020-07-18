@@ -8,6 +8,7 @@ export default function Autolist({
     name,
     value,
     minLength,
+    children,
     onSuggest,
     onResolve,
     onChange,
@@ -33,24 +34,27 @@ export default function Autolist({
         [minLength, onSuggest],
     );
 
+    const handleSuggestion = useCallback(() => {
+        // Attempt to find the suggestion on enter key.
+        const suggestion = state.amalgamatedSuggestions.find((suggestion) =>
+            onResolve(state.text, suggestion),
+        );
+
+        // Resolve once we've discovered a valid suggestion.
+        if (!isNil(suggestion)) {
+            const value = onChange(suggestion);
+            methods.claimSuggestion(value);
+        }
+    }, [state.text, state.amalgamatedSuggestions, onChange, onResolve]);
+
     const handleKeyPress = useCallback(
         (event) => {
             if (event.key.toLowerCase() === 'enter') {
                 event.preventDefault();
-
-                // Attempt to find the suggestion on enter key.
-                const suggestion = state.amalgamatedSuggestions.find(
-                    (suggestion) => onResolve(state.text, suggestion),
-                );
-
-                // Resolve once we've discovered a valid suggestion.
-                if (!isNil(suggestion)) {
-                    const value = onChange(suggestion);
-                    methods.claimSuggestion(value);
-                }
+                handleSuggestion();
             }
         },
-        [state.text, state.amalgamatedSuggestions, onChange, onResolve],
+        [handleSuggestion],
     );
 
     return (
@@ -70,6 +74,8 @@ export default function Autolist({
                     <option key={suggestion.id}>{suggestion.value}</option>
                 ))}
             </datalist>
+
+            {typeof children === 'function' && children(handleSuggestion)}
         </Fragment>
     );
 }
@@ -78,6 +84,7 @@ Autolist.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
     minLength: PropTypes.number,
+    children: PropTypes.func,
     onSuggest: PropTypes.func.isRequired,
     onResolve: PropTypes.func,
     onChange: PropTypes.func.isRequired,
@@ -87,5 +94,6 @@ Autolist.defaultProps = {
     name: null,
     value: null,
     minLength: -Infinity,
+    children: null,
     onResolve: (text, suggestion) => suggestion.value === text,
 };
