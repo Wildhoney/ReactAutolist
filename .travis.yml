@@ -1,3 +1,11 @@
 language: node_js
 node_js: stable
 after_success: yarn coverage
+deploy:
+  provider: heroku
+  api_key:
+    secure: RGXWpt9b0WbvX767QUE4cZcbZmFUmdJdjJRugAo+ZlTF6pMEJhPk8J7Wq96jD0wh/1cbwoFg2zGi+lTRBttE4ld/NX3fwQi8zUDVgfFi76fhSdi3FnGwyEaPSi5TVqlB/aMyvY1ztId6ZwEBjCfS+GrwcDXSRuC1B2QsQFtTTyTy4Jih0nVEDZmGUO2kcGMULUXi+pEDeDN51rin5sWLc2qOVPABIte0bGNrhz3vAK9u9EC+L14/p+Am3EnWQPH/FCjSHASm+3c45Ju54a114NwNmKV5hZ3SdHX6tnAvmTnfjoGACHEF3vsBFvBqDiqJQ5xix1qwSxAjUO2Pz2vLKewWuR9hCmWB4dD4vpC6A2NhdJjJlvwoRrwWwD0YMf/vftDVtvQebQUcIaTTxu7waof+v2DcOgnE89UpPIMB3CorMRNhAqGrAEgr+x7Ef3irhAENsjEKN6N5X37P3vYIJ7jz1rIrjQ2FR9E8rE3LcRj70++4j8tFPBLZM/tY7nXXDcjUj1RENYUrsoqWHdokhGD4V1ssNM3KJeAXyNjl/sYzHlZWpg/aUAkV7g0phuKNd6dRK1JeKt8OBMETKjKrGE1B11CTEq8K2TaXNULABwoFoCJF4ASIu0c+EtWlw2WxeJFLp7YtUasj6d9N/kMuL4lGX3m3rL2HDuOjlMDSbhI=
+  app: react-autolist
+  on:
+    repo: Wildhoney/ReactAutolist
+  skip_cleanup: 'true'

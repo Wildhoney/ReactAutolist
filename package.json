@@ -8,8 +8,8 @@
     "author": "Adam Timberlake <adam.timberlake@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "build": "rollup -c && next build ./example",
-        "start": "next start ./example -p ${PORT:-3000}",
+        "build": "rollup -c && next build example",
+        "start": "next start -p ${PORT:-3000}",
         "dev": "next ./example -p ${PORT:-3000}",
         "format": "prettier --write '**/**.{js,json}'",
         "test": "yarn lint && yarn spec",

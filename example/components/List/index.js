@@ -9,7 +9,7 @@ export default function List() {
     const [list, setList] = useState([]);
 
     const handleSuggest = useCallback(async (country) => {
-        await delay(2000);
+        await delay(Math.random() * 500);
 
         return countries
             .filter(({ name }) =>
