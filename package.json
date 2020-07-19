@@ -13,7 +13,7 @@
         "test": "yarn lint && yarn spec",
         "spec": "ava",
         "lint": "eslint '**/**.js'",
-        "coverage": "nyc ava && nyc report --reporter=text-lcov | coveralls",
+        "coverage": "nyc --reporter=text-lcov ava | coveralls",
         "dev": "next ./example -p ${PORT:-3000}"
     },
     "dependencies": {
