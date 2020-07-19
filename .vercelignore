@@ -3,11 +3,10 @@
 misc/
 src/__tests__/
 
-.babelrc
 .npmignore
 .eslintignore
 .eslintrc
 .prettierignore
 .prettierrc.json
+.travis.yml
 ava.config.js
-rollup.config.js

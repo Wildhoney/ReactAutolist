@@ -8,13 +8,14 @@
     "author": "Adam Timberlake <adam.timberlake@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "build": "rollup -c",
+        "build": "rollup -c && next build ./example",
+        "start": "next start ./example -p ${PORT:-3000}",
+        "dev": "next ./example -p ${PORT:-3000}",
         "format": "prettier --write '**/**.{js,json}'",
         "test": "yarn lint && yarn spec",
         "spec": "ava",
         "lint": "eslint '**/**.js'",
         "coverage": "nyc --reporter=text-lcov ava | coveralls",
-        "dev": "next ./example -p ${PORT:-3000}",
         "deploy": "vercel"
     },
     "dependencies": {
