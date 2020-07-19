@@ -34,15 +34,15 @@ export default function Autolist({
         [minLength, onSuggest],
     );
 
-    const handleSuggestion = useCallback(() => {
-        // Attempt to find the suggestion on enter key.
+    const handleSuggestion = useCallback(async () => {
+        // Find the suggestion from the amalgamated suggestions.
         const suggestion = state.amalgamatedSuggestions.find((suggestion) =>
             onResolve(state.text, suggestion),
         );
 
         // Resolve once we've discovered a valid suggestion.
         if (!isNil(suggestion)) {
-            const value = onChange(suggestion);
+            const value = await onChange(suggestion);
             methods.claimSuggestion(value);
         }
     }, [state.text, state.amalgamatedSuggestions, onChange, onResolve]);
@@ -50,6 +50,7 @@ export default function Autolist({
     const handleKeyPress = useCallback(
         (event) => {
             if (event.key.toLowerCase() === 'enter') {
+                // Attempt to find the suggestion on enter key.
                 event.preventDefault();
                 handleSuggestion();
             }
