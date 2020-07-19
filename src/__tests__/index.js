@@ -75,13 +75,13 @@ test('It should be able to invoke the `onChange` when selecting a value from the
         .simulate('change', { target: { value: 'United Kingdom' } });
     await delay(1);
     t.snapshot(wrapper.find('datalist').html());
-    wrapper.find('input').simulate('keypress', { key: 'enter' });
+    wrapper.find('input').simulate('keypress', { key: 'Enter' });
     t.is(spies.onChange.callCount, 1);
 
     wrapper.find('input').simulate('change', { target: { value: 'kingdom' } });
     await delay(1);
     t.snapshot(wrapper.find('datalist').html());
-    wrapper.find('input').simulate('keypress', { key: 'enter' });
+    wrapper.find('input').simulate('keypress', { key: 'Enter' });
     t.is(spies.onChange.callCount, 1);
 
     wrapper.setProps({
@@ -91,7 +91,13 @@ test('It should be able to invoke the `onChange` when selecting a value from the
     wrapper.find('input').simulate('change', { target: { value: 'kingdom' } });
     await delay(1);
     t.snapshot(wrapper.find('datalist').html());
-    wrapper.find('input').simulate('keypress', { key: 'enter' });
+    wrapper.find('input').simulate('keypress', { key: 'Enter' });
+    t.is(spies.onChange.callCount, 2);
+
+    wrapper.find('input').simulate('change', { target: { value: 'kingdom' } });
+    await delay(1);
+    t.snapshot(wrapper.find('datalist').html());
+    wrapper.find('input').simulate('keypress', { key: 'A' });
     t.is(spies.onChange.callCount, 2);
 });
 
