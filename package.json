@@ -14,7 +14,8 @@
         "spec": "ava",
         "lint": "eslint '**/**.js'",
         "coverage": "nyc --reporter=text-lcov ava | coveralls",
-        "dev": "next ./example -p ${PORT:-3000}"
+        "dev": "next ./example -p ${PORT:-3000}",
+        "deploy": "vercel"
     },
     "dependencies": {
         "prop-types": "^15.7.2",

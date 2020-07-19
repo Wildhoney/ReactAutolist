@@ -1,0 +1,13 @@
+.history/
+.nyc_output/
+misc/
+src/__tests__/
+
+.babelrc
+.npmignore
+.eslintignore
+.eslintrc
+.prettierignore
+.prettierrc.json
+ava.config.js
+rollup.config.js
