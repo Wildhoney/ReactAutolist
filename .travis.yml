@@ -8,4 +8,4 @@ deploy:
   app: react-autolist
   on:
     repo: Wildhoney/ReactAutolist
-  skip_cleanup: 'true'
+  skip_cleanup: true
