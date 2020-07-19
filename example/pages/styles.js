@@ -9,6 +9,28 @@ export const Container = styled.main`
     position: relative;
 `;
 
+export const Text = styled.div`
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 15px 20px 0;
+    font-size: 0.75rem;
+    opacity: 0.65;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    align-items: center;
+`;
+
+export const Loading = styled.span`
+    opacity: 0;
+    transition: opacity 0.25s;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 5px 10px;
+`;
+
 export const Autolist = styled(Autolist_)`
     border: 1px solid rgba(0, 0, 0, 0.15);
     border: 0;
@@ -25,16 +47,10 @@ export const Autolist = styled(Autolist_)`
     &::placeholder {
         color: lightgray;
     }
-`;
 
-export const Text = styled.p`
-    font-family: Arial, Helvetica, sans-serif;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 0 15px 10px 0;
-    font-size: 0.75rem;
-    opacity: 0.65;
+    &[data-loading='yes'] ~ ${Text} ${Loading} {
+        opacity: 1;
+    }
 `;
 
 export const globalStyles = css`
